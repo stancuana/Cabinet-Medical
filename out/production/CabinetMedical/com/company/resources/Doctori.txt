@@ -1,0 +1,3 @@
+1,Frincu,George,35,gfrincu@gmail.com,sjdqy3,chirurgie,venerologie
+2,Dionosie,Ioana,25,ioana45@gmail.com,ahduwye,dermatologie,patologii
+3,Popa,Maria,45,mariapoa55@gmail.com,he346dj,neonatologie,prematuri
