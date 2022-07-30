@@ -4,6 +4,9 @@ import com.company.model.Agenda;
 import com.company.model.Programare;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -122,4 +125,62 @@ public class ControllAgenda implements Controller{
         }
         return true;
     }
+
+    public void afisareProgramariPeZi(LocalDate localDate){
+
+        ArrayList<Programare> programari= new ArrayList<>();
+        for(int i=0; i<agenda.size();i++){
+
+           if(returnStringProgramare(agenda.get(i).getProgramare()).split(",")[0].equals(localDate)){
+
+               programari.add(agenda.get(i).getProgramare());
+               System.out.println(agenda.get(i).getProgramare());
+           }
+        }
+    }
+
+    public String returnStringProgramare(Programare programare){
+
+
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd,mm,yyyy,hh,mm");
+
+       return programare.getDateInceput().format(formatter);
+    }
+
+    public Agenda returnProgramareByIdPacient(int id){
+
+        for(int i=0;i<agenda.size();i++){
+
+            if(agenda.get(i).getPacientId()==id){
+
+                return agenda.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void stergereProgramare(int id){
+
+        for(int i=0;i<agenda.size();i++) {
+
+            if (agenda.get(i).getPacientId() == id) {
+
+                delete(agenda.get(i).getId());
+            }
+        }
+    }
+
+    public int returnIdProgramareByIdpacient(int idPacient){
+
+        for(int i=0;i<agenda.size();i++) {
+
+            if (agenda.get(i).getPacientId()==idPacient) {
+
+               return agenda.get(i).getId();
+            }
+        }
+        return 0;
+    }
+
 }
+

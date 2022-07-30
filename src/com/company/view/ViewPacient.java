@@ -24,9 +24,10 @@ public class ViewPacient {
 
     public void meniu(){
         System.out.println("Pentru a crea o noua programare apasati tasta 1");
-        System.out.println("Pentru a modifica o programare apasati tasta 2");
-        System.out.println("Pentru a anula o programare apasati tasta 3");
-        System.out.println("Pentru a vizualiza o programare apasati tasta 4");
+        System.out.println("Pentru a vizualiza o programare apasati tasta 2");
+        System.out.println("Pentru a modifica o programare apasati tasta 3");
+        System.out.println("Pentru a anula o programare apasati tasta 4");
+
     }
 
     public void play(){
@@ -40,6 +41,12 @@ public class ViewPacient {
 
             switch (alegere){
                 case 1:programareNoua();
+                    break;
+                case 2:vizualizareProgramare();
+                    break;
+                case 3:
+                    break;
+                case 4:stergereprogramare();
                     break;
 
                 default: meniu();
@@ -55,6 +62,7 @@ public class ViewPacient {
         String numeDoctor=scanner.nextLine();
         System.out.println("Introduceti data si ora la care doriti programarea");
         String dataInceput=scanner.nextLine();
+        System.out.println("Introduceti data si ora la care doriti sa se sfarseasca programarea");
         String dataSfarit=scanner.nextLine();
 
         Programare programare=new Programare(dataInceput,dataSfarit);
@@ -65,8 +73,29 @@ public class ViewPacient {
         }else{
             System.out.println("Nu se poate realiza programarea in intervalul de timp selectat");
         }
+    }
 
-        Agenda agenda=new Agenda(controllAgenda.nextAvailableId(),controllDoctor.returnIdDoctorByName(numeDoctor),controllPacient.nextAvailableId());
+    public void vizualizareProgramare(){
+
+        System.out.println("Introduceti numele dumenavostra: ");
+        String nume=scanner.nextLine();
+
+        System.out.println(controllAgenda.returnProgramareByIdPacient(controllPacient.returnareIdPacientByNumePacient(nume)).toString());
+    }
+
+    public void updateProgramare(){
+
+
+    }
+
+    public void stergereprogramare(){
+
+        System.out.println("Introduceti numele dumenavostra: ");
+        String nume=scanner.nextLine();
+
+        controllAgenda.stergereProgramare(controllAgenda.returnIdProgramareByIdpacient(controllPacient.returnareIdPacientByNumePacient(nume)));
+        System.out.println("Programarea a fost stearsa cu succes!");
+
     }
 
 }

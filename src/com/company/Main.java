@@ -1,12 +1,15 @@
 package com.company;
 
-import com.company.view.ViewPacientLogin;
+import com.company.view.ViewLogin;
+import com.company.view.ViewLoginPacient;
 
 public class Main {
 
     public static void main(String[] args) {
-        ViewPacientLogin viewPacientLogin=new ViewPacientLogin();
 
-        viewPacientLogin.play();
+
+        ViewLogin viewLogin=new ViewLogin();
+
+        viewLogin.play();
     }
 }

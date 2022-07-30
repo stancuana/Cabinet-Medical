@@ -110,4 +110,16 @@ public class ControllDoctor implements Controller{
         }
         return id;
     }
+
+    public Doctor returnareMedicByEmail(String email, String password){
+
+        for(int i=0; i<doctors.size();i++){
+
+            if(doctors.get(i).getEmail().equals(email)&& doctors.get(i).getPassword().equals(password)){
+
+                return doctors.get(i);
+            }
+        }
+        return null;
+    }
 }

@@ -1,17 +1,18 @@
 package com.company.view;
 
 import com.company.controllers.ControllPacient;
+import com.company.model.Doctor;
+import com.company.model.Pacient;
 
-import javax.swing.text.View;
 import java.util.Scanner;
 
-public class ViewPacientLogin {
+public class ViewLoginPacient {
 
     private ViewPacient viewPacient;
     private ControllPacient controllPacient;
     private Scanner scanner;
 
-    public ViewPacientLogin(){
+    public ViewLoginPacient(){
         viewPacient=new ViewPacient();
         controllPacient=new ControllPacient();
         scanner=new Scanner(System.in);
@@ -34,6 +35,7 @@ public class ViewPacientLogin {
             switch (alegere){
                 case 1:logare();
                     break;
+                case 2:creareCont();
 
                 default: meniu();
             }
@@ -59,6 +61,32 @@ public class ViewPacientLogin {
         }
     }
 
+
+    public void creareCont(){
+
+
+        System.out.println("Introduceti numele dumneavoastra: ");
+        String nume=scanner.nextLine();
+        System.out.println("Introduceti prenumele dumneavoastra: ");
+        String prenume=scanner.nextLine();
+        System.out.println("Introduceti varsta dumneavoastra: ");
+        int varsta=Integer.parseInt(scanner.nextLine());
+        System.out.println("Introduceti adresa de email: ");
+        String email=scanner.nextLine();
+        System.out.println("Introduceti parola: ");
+        String password=scanner.nextLine();
+        System.out.println("Introduceti afectiunea principala resimtita: ");
+        String afectiune=scanner.nextLine();
+
+
+        Pacient pacient=new Pacient(controllPacient.nextAvailableId(),nume,prenume,varsta,email, password,afectiune);
+        controllPacient.add(pacient);
+
+        System.out.println("Contul a fost creat cu succes! Bine ati venit!");
+        System.out.println("\n");
+
+        viewPacient.play();
+    }
 
 
 }

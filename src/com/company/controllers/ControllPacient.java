@@ -107,4 +107,15 @@ public class ControllPacient implements Controller{
     return null;
     }
 
+    public int returnareIdPacientByNumePacient(String nume){
+        for(int i=0; i<pacients.size();i++){
+            if(pacients.get(i).getNume().equals(nume)){
+                return pacients.get(i).getId();
+            }
+        }
+        return 0;
+    }
+
+
+
 }
