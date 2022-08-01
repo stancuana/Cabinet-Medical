@@ -4,6 +4,7 @@ import com.company.model.Agenda;
 import com.company.model.Programare;
 
 import java.io.File;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -208,6 +209,19 @@ public class ControllAgenda implements Controller{
 
         Collections.sort(programariZi);
         return programariZi;
+    }
+
+
+    public void afisareLocuriLiberePeZi(LocalDate date){
+
+        for(int i=0; i<agenda.size();i++){
+
+            agenda.get(i).getProgramare().getDateInceput()
+            agenda.get(i).getProgramare().getDateSfarsit()
+            Programare programare=new Programare(,)
+        }
+
+
     }
 
 

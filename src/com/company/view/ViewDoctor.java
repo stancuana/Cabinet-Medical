@@ -26,7 +26,7 @@ public class ViewDoctor {
     public void meniu(){
 
         System.out.println("Apasati tasta 1 pentru a vizualiza programarile dumneavoastra");
-
+        System.out.println("Apasati tasta 2 pentru a vizualiza locurile libere din data aleasa");
 
     }
 
@@ -73,6 +73,23 @@ public class ViewDoctor {
 
             System.out.println(programariZi.get(i).toString());
         }
+    }
+
+    public void locuriLibereByZi(){
+
+        System.out.println("Introduceti data pentru care doriti sa vizualizati locurile libere \n ");
+        System.out.println("Anul: ");
+        int an=Integer.parseInt(scanner.nextLine());
+        System.out.println("Luna: ");
+        int luna=Integer.parseInt(scanner.nextLine());
+        System.out.println("Ziua: ");
+        int ziua=Integer.parseInt(scanner.nextLine());
+
+        LocalDate date=LocalDate.of(an,luna,ziua);
+
+        System.out.println("Locurile libere in data de "+date+" sunt: ");
+
+
     }
 
 }
