@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ControllAgenda implements Controller{
@@ -126,19 +127,6 @@ public class ControllAgenda implements Controller{
         return true;
     }
 
-    public void afisareProgramariPeZi(LocalDate localDate){
-
-        ArrayList<Programare> programari= new ArrayList<>();
-        for(int i=0; i<agenda.size();i++){
-
-           if(returnStringProgramare(agenda.get(i).getProgramare()).split(",")[0].equals(localDate)){
-
-               programari.add(agenda.get(i).getProgramare());
-               System.out.println(agenda.get(i).getProgramare());
-           }
-        }
-    }
-
     public String returnStringProgramare(Programare programare){
 
 
@@ -170,6 +158,25 @@ public class ControllAgenda implements Controller{
         }
     }
 
+
+    //todo:functie ce primeste iduserului si returneaza  toate programarile
+
+    public ArrayList returnProgramariById(int userId){
+
+        ArrayList<Agenda> programari=new ArrayList<>();
+
+        for(int i=0;i<agenda.size();i++){
+
+            if(agenda.get(i).getPacientId()==userId || agenda.get(i).getDoctorId()==userId){
+
+                programari.add(agenda.get(i));
+            }
+        }
+
+        Collections.sort(programari);
+        return programari;
+    }
+
     public int returnIdProgramareByIdpacient(int idPacient){
 
         for(int i=0;i<agenda.size();i++) {
@@ -181,6 +188,29 @@ public class ControllAgenda implements Controller{
         }
         return 0;
     }
+
+    //todo:functie ce primeste id userului si data si returneaza toate [rpogramarile din ziua respectiva
+
+    public ArrayList programareZi(int userId, LocalDate date){
+
+
+        ArrayList<Agenda> programariUser=returnProgramariById(userId);
+
+        ArrayList<Agenda>programariZi=new ArrayList<>();
+
+        for(int i=0; i<programariUser.size();i++){
+
+                if(programariUser.get(i).getProgramare().getDateInceput().getDayOfYear()==date.getDayOfYear()){
+
+                    programariZi.add(programariUser.get(i));
+                }
+        }
+
+        Collections.sort(programariZi);
+        return programariZi;
+    }
+
+
 
 }
 

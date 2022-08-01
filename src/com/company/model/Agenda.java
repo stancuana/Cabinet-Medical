@@ -78,11 +78,6 @@ public class Agenda implements Comparable<Agenda> {
     @Override
     public int compareTo(Agenda agenda){
 
-        if(this.programare.compareTo(agenda.programare)>0){
-            return 1;
-        }else if(this.programare.compareTo(agenda.programare)<0){
-            return -1;
-        }
-        return 0;
+       return this.getProgramare().compareTo(agenda.programare);
     }
 }
