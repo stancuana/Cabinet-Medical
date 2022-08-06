@@ -211,17 +211,24 @@ public class ControllAgenda implements Controller{
         return programariZi;
     }
 
+    // todo: functie ce primeste o data si returneaza locurile libere din ziua respectiva
 
-    public void afisareLocuriLiberePeZi(LocalDate date){
+    public ArrayList afisareLocuriLiberePeZi(LocalDate date){
+
+        ArrayList locuriLibere=new ArrayList();
 
         for(int i=0; i<agenda.size();i++){
 
-            agenda.get(i).getProgramare().getDateInceput()
-            agenda.get(i).getProgramare().getDateSfarsit()
-            Programare programare=new Programare(,)
+            LocalDateTime dateInceput=agenda.get(i+1).getProgramare().getDateInceput();
+            LocalDateTime dateFinal=agenda.get(i).getProgramare().getDateSfarsit();
+
+            DateTimeFormatter formatter=DateTimeFormatter.ofPattern("EEEE, MMM dd, yyyy HH:mm:ss a");
+            Programare programare=new Programare(dateFinal.format(formatter),dateInceput.format(formatter));
+
+            locuriLibere.add(programare);
+
         }
-
-
+        return locuriLibere;
     }
 
 

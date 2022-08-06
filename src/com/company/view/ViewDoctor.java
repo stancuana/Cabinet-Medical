@@ -42,6 +42,8 @@ public class ViewDoctor {
             switch (alegere){
                 case 1:afisareProgramariZi();
                     break;
+                case 2:locuriLibereByZi();
+                break;
 
                 default: meniu();
             }
@@ -87,7 +89,15 @@ public class ViewDoctor {
 
         LocalDate date=LocalDate.of(an,luna,ziua);
 
+        ArrayList<Agenda> locuriLibere=controllAgenda.afisareLocuriLiberePeZi(date);
         System.out.println("Locurile libere in data de "+date+" sunt: ");
+
+        for(int i=0; i<locuriLibere.size();i++){
+
+            System.out.println(locuriLibere.get(i).toString());
+
+        }
+
 
 
     }

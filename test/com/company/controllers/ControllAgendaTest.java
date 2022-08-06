@@ -50,6 +50,21 @@ class ControllAgendaTest {
         }
     }
 
+    @Test
+    public void afisareLocuriLiberePeZiTest(){
+
+        ControllAgenda controllAgenda=new ControllAgenda();
+
+        ArrayList<Agenda> locuriLibere=controllAgenda.afisareLocuriLiberePeZi(LocalDate.of(2022,8,1));
+
+        for(int i=0; i<locuriLibere.size();i++){
+
+            System.out.println(locuriLibere.get(i).toString());
+
+        }
+
+    }
+
 
 
 
